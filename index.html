@@ -1,318 +1,180 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ثبت‌نام کاراته — میلاد فرازمهر</title>
-  <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma, Arial, sans-serif;
-      background: #0f1117;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px 16px;
-      color: #e2e8f0;
-    }
-
-    .card {
-      background: #1a1d27;
-      border: 1px solid #2e3346;
-      border-radius: 20px;
-      width: 100%;
-      max-width: 440px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-      overflow: hidden;
-    }
-
-    .header {
-      background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
-      padding: 32px 24px 28px;
-      text-align: center;
-      position: relative;
-    }
-
-    .header::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #f59e0b, #ef4444, #f59e0b);
-    }
-
-    .header .badge {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(8px);
-      color: #fef2f2;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      padding: 4px 12px;
-      border-radius: 20px;
-      margin-bottom: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .header h1 {
-      font-size: 22px;
-      font-weight: 800;
-      color: #ffffff;
-      line-height: 1.4;
-    }
-
-    .header p {
-      font-size: 13px;
-      color: #fca5a5;
-      margin-top: 6px;
-    }
-
-    .belt-stripe {
-      display: flex;
-      height: 6px;
-    }
-    .belt-stripe div:nth-child(1) { flex: 1; background: #ffffff; }
-    .belt-stripe div:nth-child(2) { flex: 1; background: #eab308; }
-    .belt-stripe div:nth-child(3) { flex: 1; background: #22c55e; }
-    .belt-stripe div:nth-child(4) { flex: 1; background: #3b82f6; }
-    .belt-stripe div:nth-child(5) { flex: 1; background: #854d0e; }
-    .belt-stripe div:nth-child(6) { flex: 1; background: #1c1917; }
-
-    .body {
-      padding: 28px 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    label {
-      font-size: 13px;
-      font-weight: 600;
-      color: #94a3b8;
-    }
-
-    label span {
-      color: #ef4444;
-      margin-right: 2px;
-    }
-
-    input {
-      background: #11131a;
-      border: 1.5px solid #2e3346;
-      border-radius: 12px;
-      padding: 13px 16px;
-      font-size: 14px;
-      color: #f1f5f9;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      font-family: inherit;
-    }
-
-    input:focus {
-      border-color: #ef4444;
-      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
-    }
-
-    input::placeholder {
-      color: #475569;
-    }
-
-    .error {
-      font-size: 12px;
-      color: #f87171;
-      display: none;
-    }
-
-    .btn {
-      background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
-      color: #ffffff;
-      border: none;
-      border-radius: 12px;
-      padding: 15px;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      width: 100%;
-      margin-top: 4px;
-      transition: transform 0.15s, box-shadow 0.15s, opacity 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
-      font-family: inherit;
-    }
-
-    .btn:hover:not(:disabled) {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
-    }
-
-    .btn:active:not(:disabled) {
-      transform: translateY(0);
-    }
-
-    .btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    .status-box {
-      display: none;
-      padding: 14px;
-      border-radius: 12px;
-      text-align: center;
-      font-size: 14px;
-      line-height: 1.5;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .status-success {
-      background: rgba(34, 197, 94, 0.15);
-      border: 1px solid #22c55e;
-      color: #4ade80;
-    }
-
-    .status-error {
-      background: rgba(239, 68, 68, 0.15);
-      border: 1px solid #ef4444;
-      color: #f87171;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-5px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فرم ثبت‌نام کاراته استاد میلاد فرازمهر</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: Tahoma, Arial, sans-serif;
+    background: radial-gradient(circle at 50% 0%, #262626 0%, #111111 55%, #0a0a0a 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.55);
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+  }
+  .header {
+    background: #141414;
+    padding: 34px 24px 24px;
+    text-align: center;
+    position: relative;
+  }
+  .belt-stripe {
+    display: flex;
+    height: 5px;
+    width: 100%;
+  }
+  .belt-stripe span { flex: 1; }
+  .belt-stripe span:nth-child(1) { background: #ffffff; }
+  .belt-stripe span:nth-child(2) { background: #c81e1e; }
+  .belt-stripe span:nth-child(3) { background: #111111; }
+  .icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 14px;
+    display: block;
+  }
+  h1 {
+    text-align: center;
+    font-size: 19px;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: 0.3px;
+    font-weight: bold;
+  }
+  .subtitle {
+    text-align: center;
+    font-size: 12.5px;
+    color: #9a9a9a;
+    margin-top: 8px;
+  }
+  .body {
+    padding: 26px 24px 30px;
+  }
+  label {
+    display: block;
+    font-size: 13.5px;
+    color: #333333;
+    margin-bottom: 7px;
+    margin-top: 18px;
+    font-weight: bold;
+  }
+  input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 9px;
+    border: 1.5px solid #e2e2e2;
+    font-size: 15px;
+    font-family: inherit;
+    background: #fafafa;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  input:focus {
+    outline: none;
+    border-color: #c81e1e;
+    background: #ffffff;
+  }
+  .error {
+    color: #c81e1e;
+    font-size: 12.5px;
+    margin-top: 5px;
+    display: none;
+  }
+  button {
+    width: 100%;
+    display: block;
+    margin: 28px 0 0;
+    padding: 15px;
+    border: none;
+    border-radius: 9px;
+    background: #c81e1e;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.3px;
+    transition: background 0.15s, transform 0.1s;
+  }
+  button:active { background: #a51818; transform: scale(0.99); }
+</style>
 </head>
 <body>
 
 <div class="card">
   <div class="header">
-    <div class="badge">🥋 باشگاه کاراته</div>
-    <h1>فرم ثبت‌نام هنرجو</h1>
-    <p>مربی: میلاد فرازمهر</p>
+    <svg class="icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32" cy="32" r="29" stroke="#c81e1e" stroke-width="2.5"/>
+      <path d="M24 15 L20 19 L14 24 L18 30 L22 27 L22 47 C22 48 23 49 24 49 L40 49 C41 49 42 48 42 47 L42 27 L46 30 L50 24 L44 19 L40 15 L32 21 Z" fill="#ffffff"/>
+      <path d="M24 15 L32 21 L28 26 L22 19 Z" fill="#e6e6e6"/>
+      <path d="M40 15 L32 21 L36 26 L42 19 Z" fill="#e6e6e6"/>
+      <rect x="20" y="32" width="24" height="6" rx="1" fill="#c81e1e"/>
+      <path d="M30 32 L28 40 M34 32 L36 40" stroke="#c81e1e" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <h1>فرم ثبت‌نام کلاس کاراته استاد میلاد فرازمهر</h1>
+    <div class="subtitle">اطلاعات خود را وارد کنید</div>
   </div>
-
-  <div class="belt-stripe">
-    <div></div><div></div><div></div><div></div><div></div><div></div>
-  </div>
+  <div class="belt-stripe"><span></span><span></span><span></span></div>
 
   <div class="body">
-    <div class="form-group">
-      <label for="name"><span>*</span> نام و نام خانوادگی</label>
-      <input type="text" id="name" placeholder="مثلاً: علی رضایی" />
-      <span class="error" id="err-name">لطفاً نام و نام خانوادگی را وارد کنید.</span>
-    </div>
+    <label for="name">نام و نام خانوادگی</label>
+    <input type="text" id="name" placeholder="مثلاً: علی رضایی">
+    <div class="error" id="err-name">لطفاً نام را وارد کنید</div>
 
-    <div class="form-group">
-      <label for="phone"><span>*</span> شماره تلفن</label>
-      <input type="tel" id="phone" placeholder="مثلاً: 09123456789" dir="ltr" />
-      <span class="error" id="err-phone">لطفاً شماره تلفن معتبر وارد کنید.</span>
-    </div>
+    <label for="phone">شماره تلفن</label>
+    <input type="tel" id="phone" placeholder="مثلاً: 09123456789">
+    <div class="error" id="err-phone">لطفاً شماره تلفن را وارد کنید</div>
 
-    <div class="form-group">
-      <label for="age"><span>*</span> سن</label>
-      <input type="number" id="age" placeholder="مثلاً: 12" min="1" max="120" />
-      <span class="error" id="err-age">لطفاً سن را وارد کنید.</span>
-    </div>
+    <label for="age">سن</label>
+    <input type="number" id="age" min="1" max="120" placeholder="مثلاً: 12">
+    <div class="error" id="err-age">لطفاً سن را وارد کنید</div>
 
-    <button class="btn" id="submitBtn" onclick="submitToGoogleForm()">
-      <span>ارسال و ثبت اطلاعات</span>
-    </button>
-
-    <div id="statusBox" class="status-box"></div>
+    <button onclick="sendToTelegram()">ارسال به مربی در تلگرام</button>
   </div>
 </div>
 
 <script>
-  // مقادیر استخراج شده از گوگل فرم اختصاصی شما
-  const FORM_ACTION_URL = "https://docs.google.com/forms/d/e/1FAIpQLScFakPW1Xc3tmtAmYMJ40AomHUA6Y5ouw6aQDO3LDc-rUZxMA/formResponse";
-  const ENTRY_NAME = "entry.1316565247";
-  const ENTRY_PHONE = "entry.1361905981";
-  const ENTRY_AGE = "entry.1805654657";
+function sendToTelegram() {
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const age = document.getElementById('age').value.trim();
 
-  async function submitToGoogleForm() {
-    const name = document.getElementById('name').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const age = document.getElementById('age').value.trim();
-    const btn = document.getElementById('submitBtn');
-    const statusBox = document.getElementById('statusBox');
+  let valid = true;
+  document.getElementById('err-name').style.display = name ? 'none' : 'block';
+  document.getElementById('err-phone').style.display = phone ? 'none' : 'block';
+  document.getElementById('err-age').style.display = age ? 'none' : 'block';
+  if (!name) valid = false;
+  if (!phone) valid = false;
+  if (!age) valid = false;
 
-    // ریست خطاها
-    document.getElementById('err-name').style.display = 'none';
-    document.getElementById('err-phone').style.display = 'none';
-    document.getElementById('err-age').style.display = 'none';
-    statusBox.style.display = 'none';
+  if (!valid) return;
 
-    let valid = true;
-    if (!name) {
-      document.getElementById('err-name').style.display = 'block';
-      valid = false;
-    }
-    if (!phone || phone.length < 10) {
-      document.getElementById('err-phone').style.display = 'block';
-      valid = false;
-    }
-    if (!age) {
-      document.getElementById('err-age').style.display = 'block';
-      valid = false;
-    }
+  const message =
+    'ثبت‌نام کلاس کاراته' + '\n' +
+    'نام: ' + name + '\n' +
+    'تلفن: ' + phone + '\n' +
+    'سن: ' + age;
 
-    if (!valid) return;
+  const encoded = encodeURIComponent(message);
+  const appUrl = 'tg://resolve?domain=milad_farazmehr&text=' + encoded;
+  const webUrl = 'https://t.me/milad_farazmehr?text=' + encoded;
 
-    // شروع فرآیند ارسال
-    btn.disabled = true;
-    btn.innerText = "در حال ثبت اطلاعات...";
-
-    // ساخت فرم دیتا
-    const formData = new FormData();
-    formData.append(ENTRY_NAME, name);
-    formData.append(ENTRY_PHONE, phone);
-    formData.append(ENTRY_AGE, age);
-
-    try {
-      // ارسال امن به گوگل فرم بدون نیاز به باز کردن تب جدید
-      await fetch(FORM_ACTION_URL, {
-        method: "POST",
-        mode: "no-cors",
-        body: formData
-      });
-
-      // پیام موفقیت
-      statusBox.className = "status-box status-success";
-      statusBox.innerHTML = "✅ ثبت‌نام شما با موفقیت انجام شد و در سیستم ثبت گردید.";
-      statusBox.style.display = "block";
-
-      // پاک کردن فیلدها
-      document.getElementById('name').value = '';
-      document.getElementById('phone').value = '';
-      document.getElementById('age').value = '';
-
-    } catch (error) {
-      statusBox.className = "status-box status-error";
-      statusBox.innerHTML = "❌ خطایی رخ داد. لطفاً دوباره تلاش کنید.";
-      statusBox.style.display = "block";
-    } finally {
-      btn.disabled = false;
-      btn.innerHTML = "<span>ارسال و ثبت اطلاعات</span>";
-    }
-  }
+  window.location.href = appUrl;
+  setTimeout(function () {
+    window.location.href = webUrl;
+  }, 1200);
+}
 </script>
 
 </body>
