@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ثبت‌نام باشگاه کاراته میلاد فرازمهر</title>
-    <!-- اضافه کردن فونت وزیرمتن -->
-        <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <!-- فونت وزیرمتن -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            /* اعمال فونت وزیرمتن */
             font-family: 'Vazirmatn', sans-serif;
         }
 
@@ -99,22 +98,23 @@
 
         .btn-submit:disabled {
             opacity: 0.6;
-            cursor: not-allowed;
+            cursor: not-allowed;;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s, opacity 0.2s;
+            margin-top: 10px;
         }
 
-        .btn-telegram {
-            display: block;
-            width: 100%;
-            text-align: center;
-            background: transparent;
-            border: 1px solid #0284c7;
-            color: #38bdf8;
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            text-decoration: none;
-            margin-top: 12px;
-            transition: background 0.2s;
+        .btn-submit:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;.2s;
         }
 
         .btn-telegram:hover {
@@ -139,7 +139,7 @@
     <div class="card">
         <div class="header">
             <h1>باشگاه کاراته میلاد فرازمهر</h1>
-            <p>فرم ثبت نام</p>
+            <p>فرم پیش‌ثبت‌نام و مشاوره رایگان</p>
         </div>
 
         <div id="successMessage" class="alert-success">
@@ -154,19 +154,19 @@
 
             <div class="form-group">
                 <label for="phone">شماره همراه</label>
-                <input type="tel" id="phone" required placeholder="09xxxxxxxxx" pattern="[0-9]{10,11}">
+                <input type="tel" id="phone" inputmode="numeric" required placeholder="۰۹۱۲۳۴۵۶۷۸۹">
             </div>
 
             <div class="form-group">
                 <label for="age">سن (سال)</label>
-                <input type="number" id="age" required min="4" max="80" placeholder="مثال: 16">
+                <input type="text" id="age" inputmode="numeric" required placeholder="مثال: ۱۶">
             </div>
 
             <button type="submit" id="submitBtn" class="btn-submit">ثبت نام نهایی</button>
         </form>
 
-        <a id="telegramLink" class="btn-telegram" href="https://t.me/amirrezaasjd" target="_blank">
-            💬 پیام مستقیم در تلگرام
+        <a id="telegramLink" class="btn-telegram" href="tg://resolve?domain=milad_farazmehr">
+            💬 ارسال پیام مستقیم در تلگرام
         </a>
     </div>
 
@@ -177,14 +177,27 @@
         const ENTRY_PHONE = "entry.1361905981";
         const ENTRY_AGE = "entry.1805654657";
 
+        // تابع تبدیل ارقام فارسی و عربی به ارقام انگلیسی
+        function toEnglishDigits(str) {
+            const persianDigits = [/۰/g, /۱/g, /۲/g, /۳/g, /۴/g, /۵/g, /۶/g, /۷/g, /۸/g, /۹/g];
+            const arabicDigits  = [/٠/g, /١/g, /٢/g, /٣/g, /٤/g, /٥/g, /٦/g, /٧/g, /٨/g, /٩/g];
+            
+            for (let i = 0; i < 10; i++) {
+                str = str.replace(persianDigits[i], i).replace(arabicDigits[i], i);
+            }
+            return str;
+        }
+
         async function handleSubmit(event) {
             event.preventDefault();
             
             const btn = document.getElementById('submitBtn');
             const successMsg = document.getElementById('successMessage');
+            
             const nameVal = document.getElementById('name').value.trim();
-            const phoneVal = document.getElementById('phone').value.trim();
-            const ageVal = document.getElementById('age').value.trim();
+            // نرمال‌سازی اعداد فارسی به انگلیسی
+            const phoneVal = toEnglishDigits(document.getElementById('phone').value.trim());
+            const ageVal = toEnglishDigits(document.getElementById('age').value.trim());
 
             btn.disabled = true;
             btn.textContent = "در حال ارسال اطلاعات...";
@@ -204,8 +217,9 @@
                 successMsg.style.display = 'block';
                 document.getElementById('karateForm').reset();
                 
-                const encodedMsg = encodeURIComponent(`سلام استاد فرازمهر،\nمن فرم ثبت‌نام را پر کردم.\nنام: ${nameVal}\nتلفن: ${phoneVal}\nسن: ${ageVal}`);
-                document.getElementById('telegramLink').href = `https://t.me/amirrezaasjd?text=${encodedMsg}`;
+                // پروتکل مستقیم tg:// جهت عبور از مسدودی t.me
+                const msg = `سلام استاد فرازمهر،\nمن فرم ثبت‌نام را پر کردم.\nنام: ${nameVal}\nتلفن: ${phoneVal}\nسن: ${ageVal}`;
+                document.getElementById('telegramLink').href = `tg://resolve?domain=milad_farazmehr&text=${encodeURIComponent(msg)}`;
 
             } catch (error) {
                 alert("خطایی در ثبت اطلاعات رخ داد. لطفاً مجدداً تلاش کنید.");
