@@ -98,27 +98,32 @@
 
         .btn-submit:disabled {
             opacity: 0.6;
-            cursor: not-allowed;;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
+            cursor: not-allowed;
+        }
+
+        .btn-telegram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            margin-top: 14px;
+            padding: 12px;
+            background: #0284c7;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.95rem;
             font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.2s, opacity 0.2s;
-            margin-top: 10px;
-        }
-
-        .btn-submit:hover {
-            background: #1d4ed8;
-        }
-
-        .btn-submit:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;.2s;
+            border-radius: 8px;
+            text-align: center;
+            box-sizing: border-box;
+            transition: all 0.2s ease-in-out;
         }
 
         .btn-telegram:hover {
-            background: rgba(2, 132, 199, 0.1);
+            background: #0369a1;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+            transform: translateY(-1px);
         }
 
         .alert-success {
@@ -132,30 +137,6 @@
             margin-bottom: 16px;
             font-size: 0.95rem;
         }
-.btn-telegram {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 100%;
-    margin-top: 14px;
-    padding: 12px;
-    background: #0284c7;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 600;
-    border-radius: 8px;
-    text-align: center;
-    box-sizing: border-box;
-    transition: all 0.2s ease-in-out;
-}
-
-.btn-telegram:hover {
-    background: #0369a1;
-    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
-    transform: translateY(-1px);
-}
     </style>
 </head>
 <body>
@@ -201,7 +182,6 @@
         const ENTRY_PHONE = "entry.1361905981";
         const ENTRY_AGE = "entry.1805654657";
 
-        // تابع تبدیل ارقام فارسی و عربی به ارقام انگلیسی
         function toEnglishDigits(str) {
             const persianDigits = [/۰/g, /۱/g, /۲/g, /۳/g, /۴/g, /۵/g, /۶/g, /۷/g, /۸/g, /۹/g];
             const arabicDigits  = [/٠/g, /١/g, /٢/g, /٣/g, /٤/g, /٥/g, /٦/g, /٧/g, /٨/g, /٩/g];
@@ -219,7 +199,6 @@
             const successMsg = document.getElementById('successMessage');
             
             const nameVal = document.getElementById('name').value.trim();
-            // نرمال‌سازی اعداد فارسی به انگلیسی
             const phoneVal = toEnglishDigits(document.getElementById('phone').value.trim());
             const ageVal = toEnglishDigits(document.getElementById('age').value.trim());
 
@@ -241,7 +220,6 @@
                 successMsg.style.display = 'block';
                 document.getElementById('karateForm').reset();
                 
-                // پروتکل مستقیم tg:// جهت عبور از مسدودی t.me
                 const msg = `سلام استاد فرازمهر،\nمن فرم ثبت‌نام را پر کردم.\nنام: ${nameVal}\nتلفن: ${phoneVal}\nسن: ${ageVal}`;
                 document.getElementById('telegramLink').href = `tg://resolve?domain=milad_farazmehr&text=${encodeURIComponent(msg)}`;
 
