@@ -1,319 +1,235 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ثبت‌نام کاراته — میلاد فرازمهر</title>
-  <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثبت‌نام باشگاه کاراته میلاد فرازمهر</title>
+    <!-- فونت وزیرمتن -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazirmatn', sans-serif;
+        }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma, Arial, sans-serif;
-      background: #0f1117;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px 16px;
-      color: #e2e8f0;
-    }
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-    .card {
-      background: #1a1d27;
-      border: 1px solid #2e3346;
-      border-radius: 20px;
-      width: 100%;
-      max-width: 440px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-      overflow: hidden;
-    }
+        .card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 32px;
+            width: 100%;
+            max-width: 440px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+        }
 
-    .header {
-      background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
-      padding: 32px 24px 28px;
-      text-align: center;
-      position: relative;
-    }
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
 
-    .header::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #f59e0b, #ef4444, #f59e0b);
-    }
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 8px;
+        }
 
-    .header .badge {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(8px);
-      color: #fef2f2;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      padding: 4px 12px;
-      border-radius: 20px;
-      margin-bottom: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
+        .header p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
 
-    .header h1 {
-      font-size: 22px;
-      font-weight: 800;
-      color: #ffffff;
-      line-height: 1.4;
-    }
+        .form-group {
+            margin-bottom: 18px;
+        }
 
-    .header p {
-      font-size: 13px;
-      color: #fca5a5;
-      margin-top: 6px;
-    }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+            color: #cbd5e1;
+        }
 
-    .belt-stripe {
-      display: flex;
-      height: 6px;
-    }
-    .belt-stripe div:nth-child(1) { flex: 1; background: #ffffff; }
-    .belt-stripe div:nth-child(2) { flex: 1; background: #eab308; }
-    .belt-stripe div:nth-child(3) { flex: 1; background: #22c55e; }
-    .belt-stripe div:nth-child(4) { flex: 1; background: #3b82f6; }
-    .belt-stripe div:nth-child(5) { flex: 1; background: #854d0e; }
-    .belt-stripe div:nth-child(6) { flex: 1; background: #1c1917; }
+        input {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 8px;
+            border: 1px solid #475569;
+            background: #0f172a;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
 
-    .body {
-      padding: 28px 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+        input:focus {
+            border-color: #38bdf8;
+        }
 
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+        .btn-submit {
+            width: 100%;
+            background: #2563eb;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s, opacity 0.2s;
+            margin-top: 10px;
+        }
 
-    label {
-      font-size: 13px;
-      font-weight: 600;
-      color: #94a3b8;
-    }
+        .btn-submit:hover {
+            background: #1d4ed8;
+        }
 
-    label span {
-      color: #ef4444;
-      margin-right: 2px;
-    }
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
 
-    input {
-      background: #11131a;
-      border: 1.5px solid #2e3346;
-      border-radius: 12px;
-      padding: 13px 16px;
-      font-size: 14px;
-      color: #f1f5f9;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      font-family: inherit;
-    }
+        .btn-telegram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            margin-top: 14px;
+            padding: 12px;
+            background: #0284c7;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 8px;
+            text-align: center;
+            box-sizing: border-box;
+            transition: all 0.2s ease-in-out;
+        }
 
-    input:focus {
-      border-color: #ef4444;
-      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
-    }
+        .btn-telegram:hover {
+            background: #0369a1;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+            transform: translateY(-1px);
+        }
 
-    input::placeholder {
-      color: #475569;
-    }
-
-    .error {
-      font-size: 12px;
-      color: #f87171;
-      display: none;
-    }
-
-    .btn {
-      background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
-      color: #ffffff;
-      border: none;
-      border-radius: 12px;
-      padding: 15px;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      width: 100%;
-      margin-top: 4px;
-      transition: transform 0.15s, box-shadow 0.15s, opacity 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
-      font-family: inherit;
-    }
-
-    .btn:hover:not(:disabled) {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
-    }
-
-    .btn:active:not(:disabled) {
-      transform: translateY(0);
-    }
-
-    .btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    .status-box {
-      display: none;
-      padding: 14px;
-      border-radius: 12px;
-      text-align: center;
-      font-size: 14px;
-      line-height: 1.5;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .status-success {
-      background: rgba(34, 197, 94, 0.15);
-      border: 1px solid #22c55e;
-      color: #4ade80;
-    }
-
-    .status-error {
-      background: rgba(239, 68, 68, 0.15);
-      border: 1px solid #ef4444;
-      color: #f87171;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-5px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+        .alert-success {
+            display: none;
+            background: #064e3b;
+            border: 1px solid #059669;
+            color: #a7f3d0;
+            padding: 14px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+    </style>
 </head>
 <body>
 
-<div class="card">
-  <div class="header">
-    <div class="badge">🥋 باشگاه کاراته</div>
-    <h1>فرم ثبت‌نام هنرجو</h1>
-    <p>مربی: میلاد فرازمهر</p>
-  </div>
+    <div class="card">
+        <div class="header">
+            <h1>باشگاه کاراته میلاد فرازمهر</h1>
+            <p>فرم پیش‌ثبت‌نام و مشاوره رایگان</p>
+        </div>
 
-  <div class="belt-stripe">
-    <div></div><div></div><div></div><div></div><div></div><div></div>
-  </div>
+        <div id="successMessage" class="alert-success">
+            ✅ اطلاعات شما با موفقیت ثبت شد! به زودی با شما تماس می‌گیریم.
+        </div>
 
-  <div class="body">
-    <div class="form-group">
-      <label for="name"><span>*</span> نام و نام خانوادگی</label>
-      <input type="text" id="name" placeholder="مثلاً: علی رضایی" />
-      <span class="error" id="err-name">لطفاً نام و نام خانوادگی را وارد کنید.</span>
+        <form id="karateForm" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label for="name">نام و نام خانوادگی</label>
+                <input type="text" id="name" required placeholder="مثال: علی محمدی">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">شماره همراه</label>
+                <input type="tel" id="phone" inputmode="numeric" required placeholder="۰۹۱۲۳۴۵۶۷۸۹">
+            </div>
+
+            <div class="form-group">
+                <label for="age">سن (سال)</label>
+                <input type="text" id="age" inputmode="numeric" required placeholder="مثال: ۱۶">
+            </div>
+
+            <button type="submit" id="submitBtn" class="btn-submit">ثبت نام نهایی</button>
+        </form>
+
+        <a id="telegramLink" class="btn-telegram" href="tg://resolve?domain=milad_farazmehr">
+            💬 ارسال پیام مستقیم در تلگرام
+        </a>
     </div>
 
-    <div class="form-group">
-      <label for="phone"><span>*</span> شماره تلفن</label>
-      <input type="tel" id="phone" placeholder="مثلاً: 09123456789" dir="ltr" />
-      <span class="error" id="err-phone">لطفاً شماره تلفن معتبر وارد کنید.</span>
-    </div>
+    <script>
+        const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/d/e/1FAIpQLScFakPW1Xc3tmtAmYMJ40AomHUA6Y5ouw6aQDO3LDc-rUZxMA/formResponse";
+        
+        const ENTRY_NAME = "entry.1316565247";
+        const ENTRY_PHONE = "entry.1361905981";
+        const ENTRY_AGE = "entry.1805654657";
 
-    <div class="form-group">
-      <label for="age"><span>*</span> سن</label>
-      <input type="number" id="age" placeholder="مثلاً: 12" min="1" max="120" />
-      <span class="error" id="err-age">لطفاً سن را وارد کنید.</span>
-    </div>
+        function toEnglishDigits(str) {
+            const persianDigits = [/۰/g, /۱/g, /۲/g, /۳/g, /۴/g, /۵/g, /۶/g, /۷/g, /۸/g, /۹/g];
+            const arabicDigits  = [/٠/g, /١/g, /٢/g, /٣/g, /٤/g, /٥/g, /٦/g, /٧/g, /٨/g, /٩/g];
+            
+            for (let i = 0; i < 10; i++) {
+                str = str.replace(persianDigits[i], i).replace(arabicDigits[i], i);
+            }
+            return str;
+        }
 
-    <button class="btn" id="submitBtn" onclick="submitToGoogleForm()">
-      <span>ارسال و ثبت اطلاعات</span>
-    </button>
+        async function handleSubmit(event) {
+            event.preventDefault();
+            
+            const btn = document.getElementById('submitBtn');
+            const successMsg = document.getElementById('successMessage');
+            
+            const nameVal = document.getElementById('name').value.trim();
+            const phoneVal = toEnglishDigits(document.getElementById('phone').value.trim());
+            const ageVal = toEnglishDigits(document.getElementById('age').value.trim());
 
-    <div id="statusBox" class="status-box"></div>
-  </div>
-</div>
+            btn.disabled = true;
+            btn.textContent = "در حال ارسال اطلاعات...";
 
-<script>
-  // مقادیر استخراج شده از گوگل فرم اختصاصی شما
-  const FORM_ACTION_URL = "https://docs.google.com/forms/d/e/1FAIpQLScFakPW1Xc3tmtAmYMJ40AomHUA6Y5ouw6aQDO3LDc-rUZxMA/formResponse";
-  const ENTRY_NAME = "entry.1316565247";
-  const ENTRY_PHONE = "entry.1361905981";
-  const ENTRY_AGE = "entry.1805654657";
+            const formData = new FormData();
+            formData.append(ENTRY_NAME, nameVal);
+            formData.append(ENTRY_PHONE, phoneVal);
+            formData.append(ENTRY_AGE, ageVal);
 
-  async function submitToGoogleForm() {
-    const name = document.getElementById('name').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const age = document.getElementById('age').value.trim();
-    const btn = document.getElementById('submitBtn');
-    const statusBox = document.getElementById('statusBox');
+            try {
+                await fetch(GOOGLE_FORM_ACTION_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData
+                });
 
-    // ریست خطاها
-    document.getElementById('err-name').style.display = 'none';
-    document.getElementById('err-phone').style.display = 'none';
-    document.getElementById('err-age').style.display = 'none';
-    statusBox.style.display = 'none';
+                successMsg.style.display = 'block';
+                document.getElementById('karateForm').reset();
+                
+                const msg = `سلام استاد فرازمهر،\nمن فرم ثبت‌نام را پر کردم.\nنام: ${nameVal}\nتلفن: ${phoneVal}\nسن: ${ageVal}`;
+                document.getElementById('telegramLink').href = `tg://resolve?domain=milad_farazmehr&text=${encodeURIComponent(msg)}`;
 
-    let valid = true;
-    if (!name) {
-      document.getElementById('err-name').style.display = 'block';
-      valid = false;
-    }
-    if (!phone || phone.length < 10) {
-      document.getElementById('err-phone').style.display = 'block';
-      valid = false;
-    }
-    if (!age) {
-      document.getElementById('err-age').style.display = 'block';
-      valid = false;
-    }
-
-    if (!valid) return;
-
-    // شروع فرآیند ارسال
-    btn.disabled = true;
-    btn.innerText = "در حال ثبت اطلاعات...";
-
-    // ساخت فرم دیتا
-    const formData = new FormData();
-    formData.append(ENTRY_NAME, name);
-    formData.append(ENTRY_PHONE, phone);
-    formData.append(ENTRY_AGE, age);
-
-    try {
-      // ارسال امن به گوگل فرم بدون نیاز به باز کردن تب جدید
-      await fetch(FORM_ACTION_URL, {
-        method: "POST",
-        mode: "no-cors",
-        body: formData
-      });
-
-      // پیام موفقیت
-      statusBox.className = "status-box status-success";
-      statusBox.innerHTML = "✅ ثبت‌نام شما با موفقیت انجام شد و در سیستم ثبت گردید.";
-      statusBox.style.display = "block";
-
-      // پاک کردن فیلدها
-      document.getElementById('name').value = '';
-      document.getElementById('phone').value = '';
-      document.getElementById('age').value = '';
-
-    } catch (error) {
-      statusBox.className = "status-box status-error";
-      statusBox.innerHTML = "❌ خطایی رخ داد. لطفاً دوباره تلاش کنید.";
-      statusBox.style.display = "block";
-    } finally {
-      btn.disabled = false;
-      btn.innerHTML = "<span>ارسال و ثبت اطلاعات</span>";
-    }
-  }
-</script>
-
+            } catch (error) {
+                alert("خطایی در ثبت اطلاعات رخ داد. لطفاً مجدداً تلاش کنید.");
+            } finally {
+                btn.disabled = false;
+                btn.textContent = "ثبت نام نهایی";
+            }
+        }
+    </script>
 </body>
 </html>
