@@ -144,7 +144,7 @@
     <div class="card">
         <div class="header">
             <h1>باشگاه کاراته میلاد فرازمهر</h1>
-            <p>فرم ثبت نام  </p>
+            <p>فرم پیش‌ثبت‌نام و مشاوره رایگان</p>
         </div>
 
         <div id="successMessage" class="alert-success">
@@ -176,12 +176,9 @@
     </div>
 
     <script>
-        const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/d/e/1FAIpQLScFakPW1Xc3tmtAmYMJ40AomHUA6Y5ouw6aQDO3LDc-rUZxMA/formResponse";
-        
-        const ENTRY_NAME = "entry.1316565247";
-        const ENTRY_PHONE = "entry.1361905981";
-        const ENTRY_AGE = "entry.1805654657";
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw_u8Yq5wLho7UHszqoBMXHqiKn9xsu3IliKlDy_iak7wwDScc4LdoSrE_YkMC8ZZm9/exec";
 
+        // تابع تبدیل ارقام فارسی و عربی به ارقام انگلیسی
         function toEnglishDigits(str) {
             const persianDigits = [/۰/g, /۱/g, /۲/g, /۳/g, /۴/g, /۵/g, /۶/g, /۷/g, /۸/g, /۹/g];
             const arabicDigits  = [/٠/g, /١/g, /٢/g, /٣/g, /٤/g, /٥/g, /٦/g, /٧/g, /٨/g, /٩/g];
@@ -205,21 +202,26 @@
             btn.disabled = true;
             btn.textContent = "در حال ارسال اطلاعات...";
 
-            const formData = new FormData();
-            formData.append(ENTRY_NAME, nameVal);
-            formData.append(ENTRY_PHONE, phoneVal);
-            formData.append(ENTRY_AGE, ageVal);
+            const payload = {
+                name: nameVal,
+                phone: phoneVal,
+                age: ageVal
+            };
 
             try {
-                await fetch(GOOGLE_FORM_ACTION_URL, {
+                await fetch(APPS_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
-                    body: formData
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8'
+                    },
+                    body: JSON.stringify(payload)
                 });
 
                 successMsg.style.display = 'block';
                 document.getElementById('karateForm').reset();
                 
+                // به‌روزرسانی لینک تلگرام
                 const msg = `سلام استاد فرازمهر،\nمن فرم ثبت‌نام را پر کردم.\nنام: ${nameVal}\nتلفن: ${phoneVal}\nسن: ${ageVal}`;
                 document.getElementById('telegramLink').href = `tg://resolve?domain=milad_farazmehr&text=${encodeURIComponent(msg)}`;
 
