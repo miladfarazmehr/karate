@@ -189,7 +189,7 @@
             return str;
         }
 
-        async function handleSubmit(event) {
+                async function handleSubmit(event) {
             event.preventDefault();
             
             const btn = document.getElementById('submitBtn');
@@ -202,26 +202,25 @@
             btn.disabled = true;
             btn.textContent = "در حال ارسال اطلاعات...";
 
-            const payload = {
-                name: nameVal,
-                phone: phoneVal,
-                age: ageVal
-            };
+            const formData = new URLSearchParams();
+            formData.append('name', nameVal);
+            formData.append('phone', phoneVal);
+            formData.append('age', ageVal);
 
             try {
                 await fetch(APPS_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
                     headers: {
-                        'Content-Type': 'text/plain;charset=utf-8'
+                        'Content-Type': 'application/x-www-form-urlencoded'
                     },
-                    body: JSON.stringify(payload)
+                    body: formData.toString()
                 });
 
                 successMsg.style.display = 'block';
                 document.getElementById('karateForm').reset();
                 
-                // به‌روزرسانی لینک تلگرام
+                // به‌روزرسانی متن و لینک تلگرام
                 const msg = `سلام استاد فرازمهر،\nمن فرم ثبت‌نام را پر کردم.\nنام: ${nameVal}\nتلفن: ${phoneVal}\nسن: ${ageVal}`;
                 document.getElementById('telegramLink').href = `tg://resolve?domain=milad_farazmehr&text=${encodeURIComponent(msg)}`;
 
@@ -232,6 +231,7 @@
                 btn.textContent = "ثبت نام نهایی";
             }
         }
+
     </script>
 </body>
 </html>
