@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ثبت‌نام باشگاه کاراته میلاد فرازمهر</title>
+    <!-- اضافه کردن فونت وزیرمتن -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            /* اعمال فونت وزیرمتن */
+            font-family: 'Vazirmatn', sans-serif;
         }
 
         body {
@@ -170,7 +173,6 @@
     <script>
         const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/d/e/1FAIpQLScFakPW1Xc3tmtAmYMJ40AomHUA6Y5ouw6aQDO3LDc-rUZxMA/formResponse";
         
-        // شناسه‌های دقیق فیلدهای فرم گوگل شما
         const ENTRY_NAME = "entry.1316565247";
         const ENTRY_PHONE = "entry.1361905981";
         const ENTRY_AGE = "entry.1805654657";
@@ -187,25 +189,21 @@
             btn.disabled = true;
             btn.textContent = "در حال ارسال اطلاعات...";
 
-            // ساخت فرم‌دیتا برای ارسال به گوگل
             const formData = new FormData();
             formData.append(ENTRY_NAME, nameVal);
             formData.append(ENTRY_PHONE, phoneVal);
             formData.append(ENTRY_AGE, ageVal);
 
             try {
-                // ارسال مستقیم به Google Forms (با حالت no-cors برای دور زدن محدودیت مرورگر)
                 await fetch(GOOGLE_FORM_ACTION_URL, {
                     method: 'POST',
                     mode: 'no-cors',
                     body: formData
                 });
 
-                // نمایش پیام موفقیت
                 successMsg.style.display = 'block';
                 document.getElementById('karateForm').reset();
                 
-                // به‌روزرسانی لینک تلگرام به همراه پیام پیش‌فرض برای کاربر
                 const encodedMsg = encodeURIComponent(`سلام استاد فرازمهر،\nمن فرم ثبت‌نام را پر کردم.\nنام: ${nameVal}\nتلفن: ${phoneVal}\nسن: ${ageVal}`);
                 document.getElementById('telegramLink').href = `https://t.me/milad_farazmehr?text=${encodedMsg}`;
 
@@ -214,8 +212,8 @@
             } finally {
                 btn.disabled = false;
                 btn.textContent = "ثبت نام نهایی";
- کد را در گیت‌هاب درون فایل `index.html` کپی و ذخیره (**Commit changes**) کنید.
-2. صفحه سایت را در مرورگر باز کنید (`Ctrl + F5` برای رفرش کش).
-3. یک فرم تستی سایت را در مرورگر باز کنید (`Ctrl + F5` برای رفرش کش).
-3. یک فرم تستی با نام و شماره پر کنید و دکمه **«ثبت نام نهایی»** را بزنید.
-4. شیت متصل به گوگل‌فرم را باز کنید؛ ردیف جدید بلافاصله آنجا درج شده است!
+            }
+        }
+    </script>
+</body>
+</html>
